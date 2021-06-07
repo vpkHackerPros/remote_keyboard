@@ -2,23 +2,23 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 
-const Input = styled.input`
+const Input = styled.textarea`
   box-sizing: border-box;
-  padding: 3px;
+  resize: none;
+  padding: 20px;
   background-color: white;
-  border: 1px solid lightgrey;
   border-radius: 4px;
-  height: 80%;
-  width: 100%;
-  color: black;
+  height: 60px;
+  margin:5px;
+  width: 90%;
+  color: var(--textColor);
   outline: none;
-  font-size: 0.5em;
-  flex: 1;
+  font-size: 0.6em;
   &:focus {
-    background-color: lightgrey;
+    border: 13px solid var(--textColor);
+    padding:7px;
   }
 `
-
 function FastTextInput (props) {
   const handleChange = (event) => props.setText(event.target.value)
   return (

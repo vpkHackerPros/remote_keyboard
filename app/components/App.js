@@ -1,48 +1,33 @@
 import styles from './App.css'
 import React, { useState, useEffect } from 'react'
 import TextInput from './FastTextInput.js'
-import Panel from './PanelThreeDays.js'
-import OneDayPanel from './PanelOneDay.js'
-import PanelButtons from './PanelArsoData.js'
-import {SocketProvider} from '../hooks/useSocket.js'
+import FileSelector from './FileSelector.js'
 
 import styled, { createGlobalStyle } from 'styled-components'
-var fromXML = require("from-xml").fromXML;
 
 
-/*const url = "https://meteo.arso.gov.si/uploads/probase/www/fproduct/text/sl/forecast_SI_OSREDNJESLOVENSKA_latest.xml"
-fetch(url)
-    .then(function(response){
-      return response.text();
-    })
-    .then(function(data) {
-      //console.log(data);
-      //let parser = new DOMParser();
-      //xmlDoc = praser.parseFromString(data, 'text/xml');
-      //console.log(xmlDoc);
-      const xml  = fromXML(data);
-      console.log(xml);
-      console.log(xml.data.metData[0].txsyn);
-    });
-*/
+
 const GlobalStyle = createGlobalStyle`
   :root {
-    --mainColor1: #020024;
-    --mainColor2: #30c4ae;
-    --textColor: #757575;
+    --mainColor1: #2F4858; //temno modra
+    --mainColor2: #336699; //svetlej modra
+    --textColor: #119977;  //zelena
+    --background: white;
   }
   #root {
     height: 100%
   }
   body {
-    font-family: sans-serif;
     height: 100%;
     width: 100%;
-    margin: 0;
+    margin: auto;
     position: relative;
     overflow: scroll;
     font-size: 1.5em;
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(48,196,174,1) 100%);
+    background: var(--background);
+
+    //ozadje
+    background-color: var(--mainColor1);
   }
   html {
     height: 100%;
@@ -50,20 +35,38 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
   }
 `
-const AppContainer = styled.div`
-  color: var(--mainColor1);
-  height: 100%;
-  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(48,196,174,1) 100%);
-`
-
-
 export default function App (props) {
+  const [inputIter, setInputIter] = useState(0)
+  const [inputPath, setInputPath] = useState('')
+  const [output1Path, setOutput1Path] = useState('')
+  const [output2Path, setOutput2Path] = useState('')
+
+  const onInput = () => {
+    setInputIter(inputIter + 1)
+    console.log(inputIter)
+  }
+
+  useEffect(() => {
+    fetch('http://localhost:4545/paths', {
+      method: 'POST',
+      body: JSON.stringify({
+        input: inputPath,
+        output1: output1Path,
+        output2: output2Path
+      }),
+      headers: {'Content-Type': 'application/json'},
+    })
+  }, [inputPath, output1Path, output2Path])
+
   return (
-    <SocketProvider connection={{ip:'localhost', port:6100}}>
-      <GlobalStyle/>
-      <PanelButtons/>
-      <OneDayPanel/>
-      <Panel/>
-    </SocketProvider>
-  );
+    <div>
+      <p>file watcher</p>
+      <p>INPUT FILE</p>
+      <FileSelector id={'input'} onInput={onInput} setPath={setInputPath} path={inputPath}/>
+      <p>OUTPUT FILE CLOCK</p>
+      <FileSelector id={'output1'} onInput={onInput} setPath={setOutput1Path} path={output1Path}/>
+      <p>OUTPUT FILE ATTACK</p>
+      <FileSelector id={'output2'} onInput={onInput} setPath={setOutput2Path} path={output2Path}/>
+    </div>
+  )
 }

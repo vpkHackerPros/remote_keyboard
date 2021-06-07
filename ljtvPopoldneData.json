@@ -1,0 +1,50 @@
+[
+  [
+    {
+      "title": "HOFER TOPLARNIŠKA",
+      "top": "bencin 95: 0.944€",
+      "bottom": "dizel: 1.009€"
+    },
+    {
+      "title": "PETROL ŠMARTINSKA ",
+      "top": "bencin 95: 0.967€",
+      "bottom": "dizel: 1.034€"
+    },
+    {
+      "title": "PETROL DUNAJSKA ",
+      "top": "bencin 95: 0.967€",
+      "bottom": "dizel: 1.034€"
+    },
+    {
+      "title": "PETROL ŠMARTINSKA ",
+      "top": "bencin 95: 0.967€",
+      "bottom": "dizel: 1.034€"
+    },
+    {
+      "title": "PETROL DUNAJSKA ",
+      "top": "bencin 95: 0.967€",
+      "bottom": "dizel: 1.034€"
+    },
+    {
+      "title": "PETROL DUNAJSKA ",
+      "top": "bencin 95: 0.967€",
+      "bottom": "dizel: 1.034€"
+    }
+  ],
+  [
+    { "title": "TESTIRANI", "top": "1875", "bottom": "" },
+    { "title": "POZITIVNI", "top": "428", "bottom": "" },
+    { "title": "HOSPITALIZIRANI", "top": "1298", "bottom": "" },
+    { "title": "NA INTENZIVNI", "top": "205", "bottom": "" },
+    { "title": "ODP. IZ BOLNIŠNICE", "top": "36", "bottom": "" },
+    { "title": "UMRLI", "top": "51", "bottom": "" }
+  ],
+  [
+    { "title": "zlato [EUR]", "top": "1476.810", "bottom": "" },
+    { "title": "srebro [EUR]", "top": "18.409", "bottom": "" },
+    { "title": "platina [EUR]", "top": "806.310", "bottom": "" },
+    { "title": "paladij [EUR]", "top": "1997.510", "bottom": "" },
+    { "title": "USD [EUR]", "top": "1.20", "bottom": "" },
+    { "title": "CHF [EUR]", "top": "1.08", "bottom": "" }
+  ]
+]
